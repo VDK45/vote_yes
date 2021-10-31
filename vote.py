@@ -240,8 +240,8 @@ def main_menu():
     while True:
 
         win.fill(gray)
-        draw_text('Программа бесплатная.', my_font_2, (0, 0, 255), win, 50, 580)
-        draw_text('Вы сами отвечаете за свои действия.', my_font_2, (0, 0, 255), win, 50, 600)
+        draw_text('Программа бесплатная.', my_font_2, (0, 0, 255), win, 50, 630)
+        draw_text('Вы сами отвечаете за свои действия.', my_font_2, (0, 0, 255), win, 50, 650)
 
         mx, my = pygame.mouse.get_pos()
 
@@ -249,6 +249,7 @@ def main_menu():
         button_2 = pygame.Rect(50, 200, 250, 50)
         button_3 = pygame.Rect(50, 300, 300, 50)
         button_4 = pygame.Rect(50, 500, 350, 50)
+        button_5 = pygame.Rect(50, 560, 180, 30)
         if button_1.collidepoint((mx, my)):
             if click:
                 print('Голос')
@@ -262,10 +263,15 @@ def main_menu():
             if click:
                 print('Donation')
                 webbrowser.open('https://www.donationalerts.com/r/vdk45')
+        if button_5.collidepoint((mx, my)):
+            if click:
+                print('download')
+                webbrowser.open('https://cloud.mail.ru/public/BHJJ/6djS1G3qZ')
         pygame.draw.rect(win, blue, button_1)
         pygame.draw.rect(win, (20, 120, 120), button_2)
         pygame.draw.rect(win, (20, 120, 120), button_3)
         pygame.draw.rect(win, (255, 120, 0), button_4)
+        pygame.draw.rect(win, blue, button_5)
         click = False
         keys_pres = pygame.key.get_pressed()
         for even in pygame.event.get():
@@ -294,11 +300,16 @@ def main_menu():
                     print('ok')
                     if even.button == 1:
                         click = True
+                if button_5.collidepoint(even.pos):
+                    print('ok')
+                    if even.button == 1:
+                        click = True
 
         draw_text('Начать', font, (255, 255, 255), win, 80, 115)
         draw_text('Текст 1', font, (255, 255, 255), win, 80, 215)
         draw_text('Текст 2', font, (255, 255, 255), win, 80, 315)
         draw_text('Подержать меня', font, (255, 255, 255), win, 80, 515)
+        draw_text('скачать приложение', my_font_2, (255, 255, 255), win, 70, 565)
         pygame.display.update()
         clock.tick(FPS)
 
